@@ -1,7 +1,6 @@
 {
   "name": "tmdb",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -19,5 +18,6 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.2"
-  }
+  },
+  "description": ""
 }
