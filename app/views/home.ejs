@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/style.css" rel="stylesheet" />
+    <title>TMDB</title>
+</head>
+<body>
+    <main>
+        <a href="/"><h1>ALLOCINE DU PAUVRE</h1></a>        
+        <p>----------------------</p>  
+        <% if (home) { %>
+         <a href="/1">Lancer</a>
+         <p>----------------------</p>
+        <% } %>        
+        <%- include('partials/toolsBar') %>
+        <p>----------------------</p> 
+
+        <% if (data) { %>
+            <% data.forEach(element => { %>
+                <a href="/movie/<%= element.id %>">
+                    <img class="img" src="https://image.tmdb.org/t/p/original/<%= element.backdrop_path %>" alt="">
+                </a>
+                <h2>id : <%= element.id %> - <%= element.title %></h2>
+                <p>Overview : </p>
+                <p><%= element.overview %></p>           
+            <p>----------------------</p>
+            <% }) %>
+            <ul>
+                <% for( let page = 1; page <= nbrPage; page++ ) { %>
+                    <a href="/<%= page %>"><%= page %></a> 
+                <% } %>                         
+            </ul>
+        <% } %>
+    </main>
+    
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/style.css" rel="stylesheet" />
+    <title>TMDB</title>
+</head>
+<body>
+    <main>
+        <h1>CALU</h1>        
+        <p>----------------------</p>   
+        <img class="img" src="https://image.tmdb.org/t/p/original/<%= data.poster_path %>" alt="">    
+        <h2><%= data.title %></h2>
+        <h2><%= data.original_title %></h2>
+        <p><%= data.overview %></p>
+        <p>IMDB id: <%= data.imdb_id %></p>
+        <p>Note : <%= data.vote_average %> pour <%= data.vote_count %> votant !!</p>
+            
+         <a href="/1">Retour</a>        
+       
+    </main>
+    
+</body>
+</html>
