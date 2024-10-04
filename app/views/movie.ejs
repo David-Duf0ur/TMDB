@@ -10,23 +10,36 @@
     <main>
         <h1>CALU</h1>        
         <p>----------------------</p>   
-        <img class="img" src="https://image.tmdb.org/t/p/original/<%= data.poster_path %>" alt=""> 
-        <% if (type === 'movies') { %>
+        <div>
+            <img class="img" src="https://image.tmdb.org/t/p/original/<%= data.poster_path %>" alt=""> 
+        </div>
+        <div>                
+            <iframe width="500" height="300" src="https://www.youtube.com/embed/<%= dataVideos[0].key %>?autoplay=1&mute=1" frameborder="0" allowfullscreen></iframe>
+        </div>        
+        <% if (type === 'movies') { %>            
+            <% dataImages.forEach(image => { %>
+                <img class="img" src="https://image.tmdb.org/t/p/original/<%= image.file_path %>" alt="">
+            <% }) %>
             <h2><%= data.title %></h2>
-            <h2><%= data.original_title %></h2>         
+            <h2>Titre original : <%= data.original_title %></h2>         
         <% } %>  
         
-        <% if (type === 'series') { %>
+        <% if (type === 'series') { %>            
+            <% dataImages.forEach(image => { %>
+                <img class="img" src="https://image.tmdb.org/t/p/original/<%= image.file_path %>" alt="">
+            <% }) %>
             <h2><%= data.name %></h2>
-            <h2><%= data.original_name %></h2>         
+            <h2>Titre original : <%= data.original_name %></h2>         
         <% } %>  
 
         <p><%= data.overview %></p>
-        <p>IMDB id: <%= data.imdb_id %></p>
+        <% if (type === 'movies') { %>                     
+            <p>IMDB id: <%= data.imdb_id %></p>
+        <% } %>
         <p>Note : <%= data.vote_average %> pour <%= data.vote_count %> votant !!</p>
             
         <% if (type === 'movies') { %>
-            <a href="/movie/1">Retour</a> 
+            <a href="/movies/1">Retour</a> 
         <% } %>
         <% if (type === 'series') { %>
             <a href="/series/1">Retour</a>          

@@ -58,7 +58,6 @@ const moviesController = {
         }
 
         if (idNbre && !name || idNbre && name) {
-
             return res.render('movie', { data, nbrPage: null, idNbre, type: 'movies' });
         }
 
@@ -68,6 +67,9 @@ const moviesController = {
         const { id } = req.params
 
         const url = `https://api.themoviedb.org/3/movie/${id}?language=fr-FR`;
+        const urlForImages = `https://api.themoviedb.org/3/movie/${id}/images`;
+        const urlForVideo = `https://api.themoviedb.org/3/movie/${id}/videos?language=fr-FR`;
+
         const options = {
             method: 'GET', headers: {
                 accept: 'application/json',
@@ -78,7 +80,15 @@ const moviesController = {
         const resultat = await fetch(url, options)
         const data = await resultat.json()
 
-        return res.render('movie', { data, type: 'movies' });
+        const resultatImages = await fetch(urlForImages, options)
+        const dataImages = await resultatImages.json()
+
+        const resultatVideos = await fetch(urlForVideo, options)
+        const dataVideos = await resultatVideos.json()
+        console.log(dataVideos.results[0].key);
+
+
+        return res.render('movie', { data, dataImages: dataImages.backdrops, dataVideos: dataVideos.results, type: 'movies' });
     }
 }
 

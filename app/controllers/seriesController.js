@@ -68,6 +68,8 @@ const seriesController = {
         const { id } = req.params
 
         const url = `https://api.themoviedb.org/3/tv/${id}?language=fr-FR`;
+        const urlForImages = `https://api.themoviedb.org/3/tv/${id}/images`;
+        const urlForVideo = `https://api.themoviedb.org/3/tv/${id}/videos?language=fr-FR`;
 
         const options = {
             method: 'GET', headers: {
@@ -79,7 +81,14 @@ const seriesController = {
         const resultat = await fetch(url, options)
         const data = await resultat.json()
 
-        return res.render('movie', { data, type: 'series' });
+        const resultatImages = await fetch(urlForImages, options)
+        const dataImages = await resultatImages.json()
+
+        const resultatVideos = await fetch(urlForVideo, options)
+        const dataVideos = await resultatVideos.json()
+        console.log(dataVideos.results[0].key);
+
+        return res.render('movie', { data, dataImages: dataImages.backdrops, dataVideos: dataVideos.results, type: 'series' });
     }
 }
 
