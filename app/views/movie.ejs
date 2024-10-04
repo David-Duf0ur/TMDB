@@ -10,14 +10,27 @@
     <main>
         <h1>CALU</h1>        
         <p>----------------------</p>   
-        <img class="img" src="https://image.tmdb.org/t/p/original/<%= data.poster_path %>" alt="">    
-        <h2><%= data.title %></h2>
-        <h2><%= data.original_title %></h2>
+        <img class="img" src="https://image.tmdb.org/t/p/original/<%= data.poster_path %>" alt=""> 
+        <% if (type === 'movies') { %>
+            <h2><%= data.title %></h2>
+            <h2><%= data.original_title %></h2>         
+        <% } %>  
+        
+        <% if (type === 'series') { %>
+            <h2><%= data.name %></h2>
+            <h2><%= data.original_name %></h2>         
+        <% } %>  
+
         <p><%= data.overview %></p>
         <p>IMDB id: <%= data.imdb_id %></p>
         <p>Note : <%= data.vote_average %> pour <%= data.vote_count %> votant !!</p>
             
-         <a href="/1">Retour</a>        
+        <% if (type === 'movies') { %>
+            <a href="/movie/1">Retour</a> 
+        <% } %>
+        <% if (type === 'series') { %>
+            <a href="/series/1">Retour</a>          
+        <% } %>
        
     </main>
     

@@ -18,7 +18,7 @@ const securedViewsPath = join(__dirname, "app/views");
 app.set("views", securedViewsPath)
 
 app.set("port", process.env.PORT || 3000);
-app.set("base_url", process.env.BASE_URL || "http://127.0.0.1");
+app.set("base_url", process.env.BASE_URL || "localhost");
 
 app.use(router);
 
