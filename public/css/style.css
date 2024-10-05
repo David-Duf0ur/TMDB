@@ -1,7 +1,79 @@
-* {
-  background-color: blanchedalmond;
+* {  
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  padding: 0;
+  margin: 0;
 }
+
+.main_nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 20vh;  
+  background-color: burlywood;
+}
+
+.logo_title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;  
+}
+
+.logo {
+  width: 100px;
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  padding-right: 20px;  
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.provisoir {
+  height: 70vh;
+}
+
+.content  { 
+  background-color: antiquewhite;
+  padding: 20px;
+}
+
+.form_recherche {
+  padding: 50px;
+}
+
+.form_section {
+  margin-bottom: 20px;
+}
+
+.form_section label {
+  display: inline-block;
+  width: 300px;
+}
+
+.form_section input {  
+  width: 200px;
+}
+
+
+
+
 
 .img {
   width: 300px;
+}
+
+.footer p {  
+  text-align: center;
+  background-color: burlywood;
+  margin: auto 0;   
+  height: 10vh;  
 }

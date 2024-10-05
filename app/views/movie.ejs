@@ -1,51 +1,41 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/css/style.css" rel="stylesheet" />
-    <title>TMDB</title>
-</head>
-<body>
-    <main>
-        <h1>CALU</h1>        
-        <p>----------------------</p>   
-        <div>
-            <img class="img" src="https://image.tmdb.org/t/p/original/<%= data.poster_path %>" alt=""> 
-        </div>
-        <div>                
-            <iframe width="500" height="300" src="https://www.youtube.com/embed/<%= dataVideos[0].key %>?autoplay=1&mute=1" frameborder="0" allowfullscreen></iframe>
-        </div>        
-        <% if (type === 'movies') { %>            
-            <% dataImages.forEach(image => { %>
-                <img class="img" src="https://image.tmdb.org/t/p/original/<%= image.file_path %>" alt="">
-            <% }) %>
-            <h2><%= data.title %></h2>
-            <h2>Titre original : <%= data.original_title %></h2>         
-        <% } %>  
-        
-        <% if (type === 'series') { %>            
-            <% dataImages.forEach(image => { %>
-                <img class="img" src="https://image.tmdb.org/t/p/original/<%= image.file_path %>" alt="">
-            <% }) %>
-            <h2><%= data.name %></h2>
-            <h2>Titre original : <%= data.original_name %></h2>         
-        <% } %>  
-
-        <p><%= data.overview %></p>
-        <% if (type === 'movies') { %>                     
-            <p>IMDB id: <%= data.imdb_id %></p>
-        <% } %>
-        <p>Note : <%= data.vote_average %> pour <%= data.vote_count %> votant !!</p>
+<%- include('partials/header') %>
+        <div class="content">
+            <h1>CALU</h1>        
+            <p>----------------------</p>   
+            <div>
+                <img class="img" src="https://image.tmdb.org/t/p/original/<%= data.poster_path %>" alt=""> 
+            </div>
+            <div>                
+                <iframe width="500" height="300" src="https://www.youtube.com/embed/<%= dataVideos[0].key %>?autoplay=1&mute=1" frameborder="0" allowfullscreen></iframe>
+            </div>        
+            <% if (type === 'movies') { %>            
+                <% dataImages.forEach(image => { %>
+                    <img class="img" src="https://image.tmdb.org/t/p/original/<%= image.file_path %>" alt="">
+                <% }) %>
+                <h2><%= data.title %></h2>
+                <h2>Titre original : <%= data.original_title %></h2>         
+            <% } %>  
             
-        <% if (type === 'movies') { %>
-            <a href="/movies/1">Retour</a> 
-        <% } %>
-        <% if (type === 'series') { %>
-            <a href="/series/1">Retour</a>          
-        <% } %>
+            <% if (type === 'series') { %>            
+                <% dataImages.forEach(image => { %>
+                    <img class="img" src="https://image.tmdb.org/t/p/original/<%= image.file_path %>" alt="">
+                <% }) %>
+                <h2><%= data.name %></h2>
+                <h2>Titre original : <%= data.original_name %></h2>         
+            <% } %>  
+
+            <p><%= data.overview %></p>
+            <% if (type === 'movies') { %>                     
+                <p>IMDB id: <%= data.imdb_id %></p>
+            <% } %>
+            <p>Note : <%= data.vote_average %> pour <%= data.vote_count %> votant !!</p>
+                
+            <% if (type === 'movies') { %>
+                <a href="/movies/1">Retour</a> 
+            <% } %>
+            <% if (type === 'series') { %>
+                <a href="/series/1">Retour</a>          
+            <% } %>
+        </div>
        
-    </main>
-    
-</body>
-</html>
+<%- include('partials/footer') %>

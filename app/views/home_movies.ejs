@@ -1,59 +1,50 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/css/style.css" rel="stylesheet" />
-    <title>TMDB</title>
-</head>
-<body>
-    <main>
-        <a href="/"><h1>ALLOCINE DU PAUVRE</h1></a>        
-        <p>----------------------</p> 
-        <%- include('partials/toolsBar') %>
-        <p>----------------------</p> 
+<%- include('partials/header') %>
+        <div class="content">
+            <%- include('partials/toolsBar') %>
+            <p>----------------------</p> 
 
-        <% if (data) { %>
-            <% data.forEach(element => { %>
-                <% if (type === 'movies') { %>
-                    <a href="/movies/<%= element.id %>/detail">
-                        <img class="img" src="https://image.tmdb.org/t/p/original/<%= element.backdrop_path %>" alt="">
-                    </a>
-                    <h2>id : <%= element.id %> - <%= element.title %></h2>                 
-                <% } %>
+            <% if (data) { %>
+                <% data.forEach(element => { %>
+                    <% if (type === 'movies') { %>
+                        <a href="/movies/<%= element.id %>/detail">
+                            <img class="img" src="https://image.tmdb.org/t/p/original/<%= element.backdrop_path %>" alt="">
+                        </a>
+                        <h2>id : <%= element.id %> - <%= element.title %></h2>                 
+                    <% } %>
 
-                <% if (type === 'series') { %>
-                    <a href="/series/<%= element.id %>/detail">
-                        <img class="img" src="https://image.tmdb.org/t/p/original/<%= element.backdrop_path %>" alt="">
-                    </a>
-                    <h2>id : <%= element.id %> - <%= element.name %></h2>                 
-                <% } %>
+                    <% if (type === 'series') { %>
+                        <a href="/series/<%= element.id %>/detail">
+                            <img class="img" src="https://image.tmdb.org/t/p/original/<%= element.backdrop_path %>" alt="">
+                        </a>
+                        <h2>id : <%= element.id %> - <%= element.name %></h2>                 
+                    <% } %>
 
-                <p>Overview : </p>
-                <p><%= element.overview %></p>           
-            <p>----------------------</p>
-            <% }) %>
-            <ul>
-                <% if (type === 'movies') { %>
-                    <% for( let page = 1; page <= nbrPage; page++ ) { %>
-                        <a href="/movies/<%= page %>/detail"><%= page %></a> 
-                    <% } %>         
-                <% } %>
+                    <p>Overview : </p>
+                    <p><%= element.overview %></p>           
+                <p>----------------------</p>
+                <% }) %>
+                <ul>
+                    <% if (type === 'movies') { %>
+                        <% for( let page = 1; page <= nbrPage; page++ ) { %>
+                            <a href="/movies/<%= page %>/detail"><%= page %></a> 
+                        <% } %>         
+                    <% } %>
 
-                <% if (type === 'series') { %>
-                    <% for( let page = 1; page <= nbrPage; page++ ) { %>
-                        <a href="/series/<%= page %>/detail"><%= page %></a> 
-                    <% } %>            
-                <% } %>
-            </ul>
-        <% } %>
-        <% if (type === 'movies') { %>
-            <a href="/movies/1">Retour</a> 
-        <% } %>
-        <% if (type === 'series') { %>
-            <a href="/series/1">Retour</a>          
-        <% } %>
-    </main>
-    
-</body>
-</html>
+                    <% if (type === 'series') { %>
+                        <% for( let page = 1; page <= nbrPage; page++ ) { %>
+                            <a href="/series/<%= page %>/detail"><%= page %></a> 
+                        <% } %>            
+                    <% } %>
+                </ul>
+            <% }else{ %>
+                <h1>Soucis lors de la récupération des données</h1>
+            <% } %>
+            
+            <% if (type === 'movies') { %>
+                <a href="/movies/1">Retour</a> 
+            <% } %>
+            <% if (type === 'series') { %>
+                <a href="/series/1">Retour</a>          
+            <% } %>
+        </div>
+<%- include('partials/footer') %>
